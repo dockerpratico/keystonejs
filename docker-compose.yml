@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  keystonejs:
+    image: mahnunchik/keystonejs
+    environment:
+      - MONGO_PORT_27017_TCP_ADDR=mongo
+      - MONGO_PORT_27017_TCP_PORT=27017
+      - CLOUDINARY_URL=cloudinary://api_key:api_secret@cloud_name
+    ports:
+      - 8888:8080
+    links:
+      - mongo
+
+  mongo:
+    image: mongo
